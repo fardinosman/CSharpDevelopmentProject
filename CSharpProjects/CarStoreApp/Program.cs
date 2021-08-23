@@ -26,13 +26,19 @@ namespace CarStoreApp
                         String carMake = "";
                         String carModel = "";
                         Decimal carPrice = 0;
+                        Boolean isNew = false;
+                        String color = "";
                         Console.WriteLine("What is the car make? ford, gm, nissan etc.");
                         carMake = Console.ReadLine();
                         Console.WriteLine("What is the car Model ? corvette, focus, ranger etc.");
                         carModel = Console.ReadLine();
                         Console.WriteLine("What is the car price?");
                         carPrice = int.Parse(Console.ReadLine());
-                        Car newCar = new Car(carMake, carModel, carPrice);
+                        Console.WriteLine("What is the color? ");
+                        color = Console.ReadLine();
+                        Console.WriteLine("Is it a new Car? ");
+                        isNew = bool.Parse(Console.ReadLine());
+                        Car newCar = new Car(carMake, carModel, carPrice,isNew,color);
                         s.CarList.Add(newCar);
                         printInventory(s);
                         break;
@@ -80,8 +86,21 @@ namespace CarStoreApp
             int choice = 0;
             Console.WriteLine("Choose an action (0) to quit (1) to add a new car to inventory (2) add car to cart (3) checkout");
            
+                
+            try
+            {
+
                 choice = int.Parse(Console.ReadLine());
-            
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine("only integer option beetween 0-3");
+                Console.WriteLine("Choose an action (0) to quit (1) to add a new car to inventory (2) add car to cart (3)") ;
+                choice = int.Parse(Console.ReadLine());
+
+            }
            
 
 
